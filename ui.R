@@ -1,84 +1,69 @@
 # Define UI for application that draws a histogram
-shinyUI(navbarPage("Crimes against women in India",
-                   tabPanel("Literacy in  India",
+shinyUI(navbarPage("cricketr analyzes Cricketers!",
+                   tabPanel("Analyze batsman",
                             # Application title
-                            titlePanel("India Literacy"),
+                            titlePanel("Analyze batsman"),
                             
                             
                             fluidRow(
                                 column(3,
+                                       radioButtons("matchType", label = h3("Match type"),
+                                                    choices = list("Test" = "Test",
+                                                                   "ODI" = "ODI", 
+                                                                   "Twenty20" = "TT"), 
+                                                    inline=TRUE,
+                                                    selected = "Test"),
                                        selectizeInput(
-                                           "player", label = "Players", choices = NULL,multiple=FALSE,selected="Assam",
+                                           "batsman", label = "Players", choices = NULL,multiple=FALSE,selected="tendulkar",
                                            options = list(create = TRUE,placeholder = 'Choose the player')
                                            
                                        ),
                                        selectizeInput(
-                                           "func", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
+                                           "batsmanFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
                                            options = list(create = TRUE,placeholder = 'Choose the chart')
                                            
-                                       ),
-                                       radioButtons("region", label = h3("Region"),
-                                                    choices = list("Total" = "Total",
-                                                                   "Rural" = "Rural", 
-                                                                   "Urban" = "Urban"),                                                   
-                                                    selected = "Total"),
-                                       radioButtons("type", label = h3("Who"),
-                                                    choices = list("Persons" = "Persons",
-                                                                   "Males" = "Males", 
-                                                                   "Females" = "Females"),                                                                  
-                                                    selected = "Persons")
+                                       )
+       
                                 ),
                                 
-                                # Show a plot of the generated distribution
-                                
+                                # Show a plot of the generated distribution        
                                 column(6,
-                                       plotOutput("distPlot")
-                                )
-                                
-                                
-                            )      
-                            
-                            
-                            
-                   ),
-                   tabPanel("Statewise crimes",
-                            
-                            tabPanel("Statewise crimes",
-                                     # Application title
-                                     titlePanel("Crimes in each state"),
-                                     
-                                     # Sidebar with a slider input for the number of bins
-                                     fluidRow(
-                                         column(6,
-                                                
-                                                selectizeInput(
-                                                    'state', label = "State", choices = NULL,multiple=FALSE,selected="Andhra Pradesh",
-                                                    options = list(create = TRUE,placeholder = 'Choose the state')
-                                                    
-                                                ),
-                                                radioButtons("radio1", label = h3("Radio buttons"),
-                                                             choices = list("RAPE" = "RAPE",
-                                                                            "DOWRY DEATH" = "DOWRY DEATH", 
-                                                                            "ASSAULT ON WOMEN" = "ASSAULT ON WOMEN WITH INTENT TO OUTRAGE HER MODESTY",
-                                                                            "CRUELTY BY HUSBAND OR RELATIVES" = "CRUELTY BY HUSBAND OR RELATIVES",
-                                                                            "IMMORAL TRAFFIC" = "IMMORAL TRAFFIC(PREVENTION)ACT",
-                                                                            "INDECENT REPRESENTATION OF WOMEN" = 'INDECENT REPRESENTATION OF WOMEN(PREVENTION)ACT',
-                                                                            "INSULT TO THE MODESTY OF WOMEN"="INSULT TO THE MODESTY OF WOMEN",
-                                                                            "KIDNAPPING & ABDUCTION" = "KIDNAPPING & ABDUCTION",
-                                                                            "TOTAL CRIMES AGAINST WOMEN" = 'TOTAL CRIMES AGAINST WOMEN'), 
-                                                             selected = "RAPE")
-                                         ),
-                                         
-                                         # Show a plot of the generated distribution
-                                         
-                                         column(6,
-                                                plotOutput("statePlot")
-                                         )
-                                         
-                                     )       
-                                     
+                                       plotOutput("batsmanPlot")
+                                )                               
                             )
+                   ),
+                  tabPanel("Analyze bowlers",
+                            # Application title
+                            titlePanel("Analyze bowlers"),
                             
+                            fluidRow(
+                                column(3,
+                                       radioButtons("matchType1", label = h3("Match type"),
+                                                    choices = list("Test" = "Test",
+                                                                   "ODI" = "ODI", 
+                                                                   "Twenty20" = "TT"), 
+                                                    inline=TRUE,
+                                                    selected = "Test"),
+                                       selectizeInput(
+                                           "bowler", label = "Players", choices = NULL,multiple=FALSE,selected="tendulkar",
+                                           options = list(create = TRUE,placeholder = 'Choose the player')
+                                           
+                                       ),
+                                       selectizeInput(
+                                           "bowlerFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
+                                           options = list(create = TRUE,placeholder = 'Choose the chart')
+                                           
+                                       )
+                                       
+                                       
+                                ),
+                                
+                                # Show a plot of the generated distribution        
+                                column(6,
+                                       plotOutput("bowlerPlot")
+                                )                               
+                            )    
+                           
                    ),
                    tabPanel("Component 3")
                    

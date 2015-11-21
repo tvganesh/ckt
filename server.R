@@ -14,8 +14,10 @@ library(cricketr)
 
 tendulkar <- read.csv("tendulkar.csv")
 print(dim(tendulkar))
+source("analyzeBatsman.R")
+source("analyzeBowler.R")
 
-players <- c("tendulkar","dravid")
+players <- c("tendulkar","dravid","kumble")
 funcs <- c("4s of batsman","6s of batsman",
            "4s & 6s of batsman",
            "Batsman's dismissals",
@@ -33,9 +35,18 @@ funcs <- c("4s of batsman","6s of batsman",
            "Batsman Perf. 3-D",
            "Check batsmanI form status")
 
-func1 <- c("bowlerAvgWktsGround","bowlerAvgWktsOpposition","bowlerContributionWonLost","bowlerEconRate",
-           "bowlerHistWickets","bowlerMovingAverage","bowlerPerfForecast","bowlerPerfHomeAway",
-           "bowlerWktRateTT","checkBowlerInForm")
+funcs1 <- c("Bowler's Avg Wickets at Ground",
+           "Bowler's Avg Wicket against opposition",
+           "Contribution to wins & losses",
+           "Bowler's Economy Rate",
+           "Bowler's Histogram of Wickets",
+           "Bowler's Moving Average",
+           "Bowler's Perf. Forecast",
+           "Bowler's Perf. Home-Away",
+           "Bowler's Wickets-Runs plot",
+           "Bowler's Wickets Freq Percent",
+           #"bowlerWktRateTT",
+           "Check Bowler Form status")
 
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
 funRelBat <- c("relativeBatsmanSR","relativeBatsmanSRODTT","relativeRunsFreqPerf")
@@ -44,60 +55,50 @@ funcRelOD <-c("relativeBatsmanSRODTT","relativeRunsFreqPerfODTT")
 funcRelBowlERODTT <- ("relativeBowlingERODTT")
 shinyServer(function(input, output,session) {
     
-    # 1. State plot
-    # Update the drop down with all states
-    updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="tendulkar")
+
     
-    updateSelectizeInput(session, 'func', choices = funcs, server = TRUE,selected="4s of batsman")
+    updateSelectizeInput(session, 'batsman', choices = players, server = TRUE,selected="tendulkar")
+    updateSelectizeInput(session, 'batsmanFunc', choices = funcs, server = TRUE,selected="4s of batsman")
+    
+    updateSelectizeInput(session, 'bowler', choices = players, server = TRUE,selected="kumble")
+    updateSelectizeInput(session, 'bowlerFunc', choices = funcs1, server = TRUE,selected="Bowler's Wickets-Runs plot")
     # Draw the plot
-    output$distPlot <- renderPlot({  
-        cat(input$func,"\n")
-        cat(input$player,"\n")
-        file <- paste(input$player,".csv",sep="")
+    output$batsmanPlot <- renderPlot({  
+        cat("func",input$batsmanFunc,"\n")
+        cat("Player",input$batsman,"\n")
+        #file <- paste(input$player,".csv",sep="")
         filesp <- paste(input$player,"sp.csv",sep="")
-        cat(file,"\n")
+        #cat(file,"\n")
        
-        if(input$func =="4s & 6s of batsman"){
-            batsman4s6s(file,"tendulkar")
-        } else if (input$func == "4s of batsman"){
-            batsman4s(file,"Tendulkar")
-        } else if (input$func == "6s of batsman"){
-            batsman6s(file,"Tendulkar")
-        } else if (input$func == "Ground avg of batsman"){
-            batsmanAvgRunsGround(file,"Tendulkar")
-        } else if (input$func == "Avg runs scored vs opposition"){
-            batsmanAvgRunsOpposition(file,"Tendulkar")
-        } else if (input$func == "Contribution to wins & losses"){
-            batsmanContributionWonLost(filesp,"Tendulkar")
-        } else if (input$func == "Batsman's dismissals"){
-            batsmanDismissals(file,"Tendulkar")
-        } else if (input$func == "Batsman's Mean Strike Rate"){
-            batsmanMeanStrikeRate(file,"Tendulkar")
-        } else if (input$func == "Batsman's Moving Average"){
-            batsmanMovingAverage(file,"Tendulkar")
-        }  else if (input$func == "Batsman's Perf BoxHist chart"){
-            batsmanPerfBoxHist(file,"Tendulkar")
-        }  else if (input$func == "Batsman Perf. Forecast"){
-            batsmanPerfForecast(file,"Tendulkar")
-        } else if (input$func == "Batsman's Home-Away record"){
-            batsmanPerfHomeAway(filesp,"Tendulkar")
-        }  else if (input$func == "Batsman Runs-Freq. chart"){
-            batsmanRunsFreqPerf(file,"Tendulkar")
-        } else if (input$func == "Batsman Runs Likelihood est."){
-            batsmanRunsLikelihood(file,"Tendulkar")
-        }  else if (input$func == "Batsman Run Ranges"){
-            batsmanRunsRanges(file,"Tendulkar")
-        }  else if (input$func == "Batsman Perf. 3-D"){
-            battingPerf3d(file,"Tendulkar")
-        }   else if (input$func == "Check batsmanI form status"){
-            checkBatsmanInForm(file,"Tendulkar")
-        } else if (input$func == "batsman6s"){
-            batsman6s(file,"Tendulkar")
-        }         
+        
+        
+        analyzeBatsman(input$batsman,input$batsmanFunc)
+        #updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="kumble")
+        #updateSelectizeInput(session, 'func', choices = funcs1, server = TRUE,selected="Bowler's Avg Wickets at Ground")
+  
+        
         # If the user requested "All' plot the combined plot else draw the barplot
         
     })
     
+    # Draw the plot
+    output$bowlerPlot <- renderPlot({  
+        cat("func",input$bowlerFunc,"\n")
+        cat("Player",input$bowler,"\n")
+        #file <- paste(input$player,".csv",sep="")
+        filesp <- paste(input$player,"sp.csv",sep="")
+        #cat(file,"\n")
+        
+        
+        
+        analyzeBowler(input$bowler,input$bowlerFunc)
+        #updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="kumble")
+        #updateSelectizeInput(session, 'func', choices = funcs1, server = TRUE,selected="Bowler's Avg Wickets at Ground")
+        
+        
+        # If the user requested "All' plot the combined plot else draw the barplot
+        
+    })
     
     
     
