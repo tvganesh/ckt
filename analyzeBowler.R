@@ -1,9 +1,19 @@
-analyzeBowler <- function(bowler,func) {
-    file <- paste(bowler,".csv",sep="")
-    filesp <- paste(bowler,"sp.csv",sep="")
-    cat(file)
+analyzeBowler <- function(bowler,func,matchType) {
+  
    
-        
+    if(matchType == "Test") {
+        file <- paste("./data/test/bowler/",bowler,".csv",sep="")
+        filesp <- paste("./data/test/bowler/", bowler,"sp.csv",sep="")
+        print(file)
+    } else if(matchType == "ODI"){
+        file <- paste("./data/odi/bowler/",bowler,".csv",sep="")
+        filesp <- paste("./data/odi/bowler/",bowler,"sp.csv",sep="")
+        print(file)
+    } else {
+        file <- paste("./data/tt/bowler/",bowler,".csv",sep="")
+        filesp <- paste("./data/odi/bowler/",bowler,"sp.csv",sep="")
+        print(file)
+    }
         
         if(func =="Bowler's Avg Wickets at Ground"){
             print("Here1")

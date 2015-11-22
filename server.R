@@ -13,13 +13,11 @@ library(shiny)
 #install_github("tvganesh/cricketr")
 library(cricketr)
 
-
-tendulkar <- read.csv("tendulkar.csv")
-print(dim(tendulkar))
 source("analyzeBatsman.R")
 source("analyzeBowler.R")
 source("relBatsmenPerf.R")
 
+# Function names for Test  batsman analysis
 funcs <- c("4s of batsman",
            "6s of batsman",
            "4s & 6s of batsman",
@@ -38,7 +36,8 @@ funcs <- c("4s of batsman",
            "Batsman Perf. 3-D",
            "Check batsmanI form status")
 
-funcsODI <- c("4s of batsman",
+# Function names for ODI & Twetnty20 batsman analysis
+funcsODITT <- c("4s of batsman",
            "6s of batsman",
            "4s & 6s of batsman",
            "Batsman's dismissals",
@@ -56,7 +55,22 @@ funcsODI <- c("4s of batsman",
            "Batsman Perf. 3-D",
            "Check batsmanI form status")
 
+# Function names for Test bowler analysis
 funcs1 <- c("Bowler's Wickets-Runs plot",
+            "Bowler's Wickets Freq Percent",
+            "Bowler's Histogram of Wickets",
+            "Bowler's Avg Wickets at Ground",
+            "Bowler's Avg Wicket against opposition",
+            "Contribution to wins & losses",
+            "Bowler's Perf. Home-Away",
+            "Bowler's Economy Rate",
+            "Bowler's Moving Average",
+            "Bowler's Perf. Forecast",
+            #"bowlerWktRateTT",
+            "Check Bowler Form status")
+
+# Function names for ODI and Twenty20  bowler analysis
+funcs1ODITT <- c("Bowler's Wickets-Runs plot",
             "Bowler's Wickets Freq Percent",
             "Bowler's Histogram of Wickets",
             "Bowler's Avg Wickets at Ground",
@@ -109,18 +123,18 @@ shinyServer(function(input, output,session) {
     output$bowlerPlot <- renderPlot({  
         
         
-        if(input$matchType == "Test"){
+        if(input$matchType1 == "Test"){
             players <- c("kumble","warne","murali")
             updateSelectizeInput(session, 'bowler', choices = players, server = TRUE,selected=input$bowler)
             updateSelectizeInput(session, 'bowlerFunc', choices = funcs1, server = TRUE,selected=input$bowlerFunc)
             
         } else {
-            players <- c("devilliers","gayle","sehwag")
+            players <- c("malinga","johnson","southee")
             updateSelectizeInput(session, 'bowler', choices = players, server = TRUE,selected=input$bowler)
             updateSelectizeInput(session, 'bowlerFunc', choices = funcs1, server = TRUE,selected=input$bowlerFunc)
         }
         
-        analyzeBowler(input$bowler,input$bowlerFunc)
+        analyzeBowler(input$bowler,input$bowlerFunc,input$matchType1)
         
         
     })

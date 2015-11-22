@@ -2,10 +2,20 @@ analyzeBatsman <- function(batsman,func,matchType) {
    
     # Update the drop down with all batsman
     
+    if(matchType == "Test") {
+        file <- paste("./data/test/batsman/",batsman,".csv",sep="")
+        filesp <- paste("./data/test/batsman/",batsman,"sp.csv",sep="")
+        print(file)
+    } else if(matchType == "ODI"){
+        file <- paste("./data/odi/batsman/",batsman,".csv",sep="")
+        filesp <- paste("./data/odi/batsman/",batsman,"sp.csv",sep="")
+        print(file)
+    } else {
+        file <- paste("./data/tt/batsman/",batsman,".csv",sep="")
+        filesp <- paste("./data/tt/batsman/",batsman,"sp.csv",sep="")
+        print(file)
+    }
     
-    file <- paste(batsman,".csv",sep="")
-    filesp <- paste(batsman,"sp.csv",sep="")
-    cat(file)
     if(func =="4s & 6s of batsman"){
         batsman4s6s(file,batsman)
     } else if (func == "4s of batsman"){
