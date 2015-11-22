@@ -1,4 +1,4 @@
-analyzeBatsman <- function(batsman,func) {
+analyzeBatsman <- function(batsman,func,matchType) {
    
     # Update the drop down with all batsman
     
@@ -7,41 +7,45 @@ analyzeBatsman <- function(batsman,func) {
     filesp <- paste(batsman,"sp.csv",sep="")
     cat(file)
     if(func =="4s & 6s of batsman"){
-        batsman4s6s(file,"tendulkar")
+        batsman4s6s(file,batsman)
     } else if (func == "4s of batsman"){
-        batsman4s(file,"Tendulkar")
+        batsman4s(file,batsman)
     } else if (func == "6s of batsman"){
-        batsman6s(file,"Tendulkar")
+        batsman6s(file,batsman)
     } else if (func == "Ground avg of batsman"){
-        batsmanAvgRunsGround(file,"Tendulkar")
+        batsmanAvgRunsGround(file,batsman)
     } else if (func == "Avg runs scored vs opposition"){
-        batsmanAvgRunsOpposition(file,"Tendulkar")
+        batsmanAvgRunsOpposition(file,batsman)
     } else if (func == "Contribution to wins & losses"){
-        batsmanContributionWonLost(filesp,"Tendulkar")
+        batsmanContributionWonLost(filesp,batsman)
     } else if (func == "Batsman's dismissals"){
-        batsmanDismissals(file,"Tendulkar")
+        batsmanDismissals(file,batsman)
     } else if (func == "Batsman's Mean Strike Rate"){
-        batsmanMeanStrikeRate(file,"Tendulkar")
+        if(matchType == "Test"){
+            batsmanMeanStrikeRate(file,batsman)
+        } else if (matchType == "ODI"){
+            batsmanScoringRateODTT(file,batsman)
+        }
     } else if (func == "Batsman's Moving Average"){
-        batsmanMovingAverage(file,"Tendulkar")
+        batsmanMovingAverage(file,batsman)
     }  else if (func == "Batsman's Perf BoxHist chart"){
-        batsmanPerfBoxHist(file,"Tendulkar")
+        batsmanPerfBoxHist(file,batsman)
     }  else if (func == "Batsman Perf. Forecast"){
-        batsmanPerfForecast(file,"Tendulkar")
+        batsmanPerfForecast(file,batsman)
     } else if (func == "Batsman's Home-Away record"){
-        batsmanPerfHomeAway(filesp,"Tendulkar")
+        batsmanPerfHomeAway(filesp,batsman)
     }  else if (func == "Batsman Runs-Freq. chart"){
-        batsmanRunsFreqPerf(file,"Tendulkar")
+        batsmanRunsFreqPerf(file,batsman)
     } else if (func == "Batsman Runs Likelihood est."){
-        batsmanRunsLikelihood(file,"Tendulkar")
+        batsmanRunsLikelihood(file,batsman)
     }  else if (func == "Batsman Run Ranges"){
-        batsmanRunsRanges(file,"Tendulkar")
+        batsmanRunsRanges(file,batsman)
     }  else if (func == "Batsman Perf. 3-D"){
-        battingPerf3d(file,"Tendulkar")
+        battingPerf3d(file,batsman)
     }   else if (func == "Check batsman form status"){
-        checkBatsmanInForm(file,"Tendulkar")
+        checkBatsmanInForm(file,batsman)
     } else if (func == "batsman6s"){
-        batsman6s(file,"Tendulkar")
+        batsman6s(file,batsman)
     } else {
         
     }

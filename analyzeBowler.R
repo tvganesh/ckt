@@ -7,29 +7,29 @@ analyzeBowler <- function(bowler,func) {
         
         if(func =="Bowler's Avg Wickets at Ground"){
             print("Here1")
-            bowlerAvgWktsGround(file,"kumble")
+            bowlerAvgWktsGround(file,bowler)
         } else if (func == "Bowler's Avg Wicket against opposition"){
-            bowlerAvgWktsOpposition(file,"kumble")
+            bowlerAvgWktsOpposition(file,bowler)
         } else if (func == "Contribution to wins & losses"){
-            bowlerContributionWonLost(filesp,"kumble")
+            bowlerContributionWonLost(filesp,bowler)
         } else if (func == "Bowler's Economy Rate"){
-            bowlerEconRate(file,"kumble")
+            bowlerEconRate(file,bowler)
         } else if (func == "Bowler's Wickets performance"){
-            bowlerHistWickets(file,"kumble")
+            bowlerHistWickets(file,bowler)
         } else if (func == "Bowler's Moving Average"){
-            bowlerMovingAverage(file,"kumble")
+            bowlerMovingAverage(file,bowler)
         } else if (func == "Bowler's Perf. Forecast"){
-            bowlerPerfForecast(file,"kumble")
+            bowlerPerfForecast(file,bowler)
         } else if (func == "Bowler's Perf. Home-Away"){
-            bowlerPerfHomeAway(filesp,"kumble")
+            bowlerPerfHomeAway(filesp,bowler)
         } else if (func == "Bowler's Wickets-Runs plot"){
-            bowlerWktsRunsPlot(file,"kumble")
+            bowlerWktsRunsPlot(file,bowler)
         } else if (func == "Bowler's Wickets Freq Percent"){
-            bowlerWktsFreqPercent(file,"kumble")
+            bowlerWktsFreqPercent(file,bowler)
         } else if (func == "Bowler's Wickets-Runs plot"){
-            bowlerWktsRunsPlot(file,"kumble")
+            bowlerWktsRunsPlot(file,bowler)
         } else if (func == "Check Bowler Form status"){
-            checkBowlerInForm(file,"kumble")
+            checkBowlerInForm(file,bowler)
         } 
         
 }   
