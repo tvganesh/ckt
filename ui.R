@@ -19,7 +19,7 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                            
                                        ),
                                        selectizeInput(
-                                           "batsmanFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
+                                           "batsmanFunc", label = "Choose chart type", choices = NULL,multiple=FALSE,selected="4s of batsman",
                                            options = list(create = TRUE,placeholder = 'Choose the chart')
                                            
                                        )
@@ -65,6 +65,39 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                             )    
                            
                    ),
+                  tabPanel("Relative performance batsman",
+                           # Application title
+                           titlePanel("Relative performance batsman"),
+                           
+                           fluidRow(
+                               column(3,
+                                      radioButtons("matchType3", label = h3("Match type"),
+                                                   choices = list("Test" = "Test",
+                                                                  "ODI" = "ODI", 
+                                                                  "Twenty20" = "TT"), 
+                                                   inline=TRUE,
+                                                   selected = "Test"),
+                                      selectizeInput(
+                                          "batsmen", label = "Players", choices = NULL,multiple=TRUE,selected="tendulkar",
+                                          options = list(create = TRUE,placeholder = 'Choose the player')
+                                          
+                                      ),
+                                      selectizeInput(
+                                          "batsmenFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
+                                          options = list(create = TRUE,placeholder = 'Choose the chart')
+                                          
+                                      )
+                                      
+                                      
+                               ),
+                               
+                               # Show a plot of the generated distribution        
+                               column(6,
+                                      plotOutput("relBatsmanPlot")
+                               )                               
+                           )    
+                           
+                  ),
                    tabPanel("Component 3")
                    
 ))
