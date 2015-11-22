@@ -21,7 +21,12 @@ relBatsmenPerf <- function(batsmen,func,matchType) {
     
     cat(file)
     if(func =="relativeBatsmanSR"){
-        relativeBatsmanSR(file,batsmen)
+        if(matchType == "Test"){
+             relativeBatsmanSR(file,batsmen)
+        } else{
+            relativeBatsmanSRODTT(file,batsmen)
+        }
+        
     } else if (func == "relativeRunsFreqPerf"){
         relativeRunsFreqPerf(file,batsmen)
     }

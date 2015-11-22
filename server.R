@@ -16,6 +16,7 @@ library(cricketr)
 source("analyzeBatsman.R")
 source("analyzeBowler.R")
 source("relBatsmenPerf.R")
+source("relBowlersPerf.R")
 
 # Function names for Test  batsman analysis
 funcs <- c("4s of batsman",
@@ -87,10 +88,10 @@ batsmanScoringRateODTT
 #bowlerWktRateTT
 
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
-funcRelBat <- c("relativeBatsmanSR","relativeBatsmanSRODTT","relativeRunsFreqPerf")
-funcRelBowl <- c("relativeBowlingER","relativeBowlingPerf","relativeWktRateTT")
+funcRelBat <- c("relativeBatsmanSR","relativeRunsFreqPerf")
+funcRelBowlTest <- c("relativeBowlingER","relativeBowlingPerf")
 funcRelOD <-c("relativeBatsmanSRODTT","relativeRunsFreqPerfODTT")
-funcRelBowlERODTT <- ("relativeBowlingERODTT")
+funcRelBowlERODTT <- c("relativeBowlingPerf","relativeBowlingERODTT","relativeWktRateTT")
 
 
 shinyServer(function(input, output,session) {
@@ -167,16 +168,31 @@ shinyServer(function(input, output,session) {
         # If the user requested "All' plot the combined plot else draw the barplot
         
     })
+    
+    # Set the drop down players, functions based on the match type
     output$relBowlersPlot <- renderPlot({  
-        cat("func",input$bowlersFunc,"\n")
-        cat("Player",input$bowler,"\n")
-        #file <- paste(input$player,".csv",sep="")
-        filesp <- paste(input$player,"sp.csv",sep="")
-        #cat(file,"\n")
+        if(input$matchType4 == "Test"){
+            players <- c("murali","warne","kumble")
+            updateSelectizeInput(session, 'bowlers', choices = players, server = TRUE,selected=input$bowlers)
+            updateSelectizeInput(session, 'bowlersFunc', choices = funcRelBowlTest, server = TRUE,selected=input$bowlersFunc)
+            
+        } else {
+            players <- c("johnson","steyn","southee")
+            updateSelectizeInput(session, 'bowlers', choices = players, server = TRUE,selected=input$bowlers)
+            updateSelectizeInput(session, 'bowlersFunc', choices = funcRelBowlERODTT, server = TRUE,selected=input$bowlersFunc)
+        }
+        
+        
+        
+        
+        if(length(input$bowlers != 0)){
+            
+            relBowlersPerf(input$bowlers,input$bowlersFunc,input$matchType4)
+        }
         
 
         
-        relBowlersPerf(input$batsmen,input$batsmenFunc)
+        
         #updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="kumble")
         #updateSelectizeInput(session, 'func', choices = funcs1, server = TRUE,selected="Bowler's Avg Wickets at Ground")
         
