@@ -93,7 +93,40 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                
                                # Show a plot of the generated distribution        
                                column(6,
-                                      plotOutput("relBatsmanPlot")
+                                      plotOutput("relBatsmenPlot")
+                               )                               
+                           )    
+                           
+                  ),
+                  tabPanel("Relative performance of bowlers",
+                           # Application title
+                           titlePanel("Relative performance of bowlers"),
+                           
+                           fluidRow(
+                               column(3,
+                                      radioButtons("matchType4", label = h3("Match type"),
+                                                   choices = list("Test" = "Test",
+                                                                  "ODI" = "ODI", 
+                                                                  "Twenty20" = "TT"), 
+                                                   inline=TRUE,
+                                                   selected = "Test"),
+                                      selectizeInput(
+                                          "bowlers", label = "Players", choices = NULL,multiple=TRUE,selected="tendulkar",
+                                          options = list(create = TRUE,placeholder = 'Choose the player')
+                                          
+                                      ),
+                                      selectizeInput(
+                                          "bowlersFunc", label = "Chart type", choices = NULL,multiple=FALSE,selected="Assam",
+                                          options = list(create = TRUE,placeholder = 'Choose the chart')
+                                          
+                                      )
+                                      
+                                      
+                               ),
+                               
+                               # Show a plot of the generated distribution        
+                               column(6,
+                                      plotOutput("relBowlersPlot")
                                )                               
                            )    
                            

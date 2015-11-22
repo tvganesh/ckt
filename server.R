@@ -92,15 +92,14 @@ funcRelBowl <- c("relativeBowlingER","relativeBowlingPerf","relativeWktRateTT")
 funcRelOD <-c("relativeBatsmanSRODTT","relativeRunsFreqPerfODTT")
 funcRelBowlERODTT <- ("relativeBowlingERODTT")
 
-players <- c("tendulkar","dravid","ponting","sangakkara")
+
 shinyServer(function(input, output,session) {
    
     #updateSelectizeInput(session, 'batsman', choices = players, server = TRUE,selected="tendulkar")
     #updateSelectizeInput(session, 'batsmanFunc', choices = funcs, server = TRUE,selected="4s of batsman")
     
    
-    updateSelectizeInput(session, 'batsmen', choices = players, server = TRUE,selected="tendulkar")
-    updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected="relativeBatsmanSR")
+    
  
     # Analyze and display batsmen plots
     output$batsmanPlot <- renderPlot({  
@@ -139,16 +138,28 @@ shinyServer(function(input, output,session) {
         
     })
     
-    output$relBatsmanPlot <- renderPlot({  
-        cat("func",input$batsmenFunc,"\n")
-        cat("Player",input$batsmen,"\n")
+    output$relBatsmenPlot <- renderPlot({  
+        if(input$matchType3 == "Test"){
+            players <- c("tendulkar","Dravid","ponting","sangakkara")
+            updateSelectizeInput(session, 'batsmen', choices = players, server = TRUE,selected=input$batsmen)
+            updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
+            
+        } else {
+            players <- c("devilliers","gayle","sehwag")
+            updateSelectizeInput(session, 'batsmen', choices = players, server = TRUE,selected=input$batsmen)
+            updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
+        }
+        
+        #cat("func",input$batsmenFunc,"\n")
+        #cat("Player",input$batsmen,"\n")
         #file <- paste(input$player,".csv",sep="")
-        filesp <- paste(input$player,"sp.csv",sep="")
+        #filesp <- paste(input$player,"sp.csv",sep="")
         #cat(file,"\n")
         
         
-        
-        relBatsmenPerf(input$batsmen,input$batsmenFunc)
+        if(length(input$batsmen != 0)){
+             relBatsmenPerf(input$batsmen,input$batsmenFunc,input$matchType3)
+        }
         #updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="kumble")
         #updateSelectizeInput(session, 'func', choices = funcs1, server = TRUE,selected="Bowler's Avg Wickets at Ground")
         
@@ -156,7 +167,23 @@ shinyServer(function(input, output,session) {
         # If the user requested "All' plot the combined plot else draw the barplot
         
     })
-    
+    output$relBowlersPlot <- renderPlot({  
+        cat("func",input$bowlersFunc,"\n")
+        cat("Player",input$bowler,"\n")
+        #file <- paste(input$player,".csv",sep="")
+        filesp <- paste(input$player,"sp.csv",sep="")
+        #cat(file,"\n")
+        
+
+        
+        relBowlersPerf(input$batsmen,input$batsmenFunc)
+        #updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="kumble")
+        #updateSelectizeInput(session, 'func', choices = funcs1, server = TRUE,selected="Bowler's Avg Wickets at Ground")
+        
+        
+        # If the user requested "All' plot the combined plot else draw the barplot
+        
+    })
     
     
 })
