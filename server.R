@@ -84,8 +84,11 @@ funcs1ODITT <- c("Bowler's Wickets-Runs plot",
             #"bowlerWktRateTT",
             "Check Bowler Form status")
 
-batsmanScoringRateODTT
-#bowlerWktRateTT
+testBatsman <- c("Sachin Tendulkar","Rahul Dravid","Ricky Ponting","Kumar Sangakkara",
+                 "Jacques Kallis","Sunil Gavaskar","Sourav Ganguly","Brian Lara",
+                 "Vivian Richards","Sir Don Bradman","Younis Khan","Javed Miandad",
+                 "Inzamam Ul Haq","Mahela Jayawardene","Sanath Jayasuriya",
+                 "Alistair Cook","J E Root","Steven Smith","David Warner")
 
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
 funcRelBat <- c("relativeBatsmanSR","relativeRunsFreqPerf")
@@ -106,8 +109,8 @@ shinyServer(function(input, output,session) {
     output$batsmanPlot <- renderPlot({  
         # Include the list to display in the drop downs on choice of matchType
         if(input$matchType == "Test"){
-            players <- c("tendulkar","Dravid","ponting","sangakkara")
-            updateSelectizeInput(session, 'batsman', choices = players, server = TRUE,selected=input$batsman)
+            
+            updateSelectizeInput(session, 'batsman', choices = testBatsman, server = TRUE,selected=input$batsman)
             updateSelectizeInput(session, 'batsmanFunc', choices = funcs, server = TRUE,selected=input$batsmanFunc)
             
         } else {

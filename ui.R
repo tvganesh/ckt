@@ -14,12 +14,12 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                                                     inline=TRUE,
                                                     selected = "Test"),
                                        selectizeInput(
-                                           "batsman", label = "Players", choices = NULL,multiple=FALSE,selected="tendulkar",
-                                           options = list(create = TRUE,placeholder = 'Choose the player')
+                                           "batsman", label = "Players", choices = NULL, multiple=FALSE,selected="tendulkar",
+                                           options = list(create = TRUE,placeholder = 'Choose the player',size=12)
                                            
                                        ),
                                        selectizeInput(
-                                           "batsmanFunc", label = "Choose chart type", choices = NULL,multiple=FALSE,selected="4s of batsman",
+                                           "batsmanFunc", label = "Choose chart type", choices = NULL, multiple=FALSE,selected="4s of batsman",
                                            options = list(create = TRUE,placeholder = 'Choose the chart')
                                            
                                        )

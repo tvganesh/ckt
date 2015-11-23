@@ -1,7 +1,7 @@
-analyzeBatsman <- function(batsman,func,matchType) {
+analyzeBatsman <- function(name,func,matchType) {
    
     # Update the drop down with all batsman
-    
+    batsman <- mapBatsman(name)
     if(matchType == "Test") {
         file <- paste("./data/test/batsman/",batsman,".csv",sep="")
         filesp <- paste("./data/test/batsman/",batsman,"sp.csv",sep="")
@@ -17,47 +17,91 @@ analyzeBatsman <- function(batsman,func,matchType) {
     }
     
     if(func =="4s & 6s of batsman"){
-        batsman4s6s(file,batsman)
+        batsman4s6s(file,name)
     } else if (func == "4s of batsman"){
-        batsman4s(file,batsman)
+        batsman4s(file,name)
     } else if (func == "6s of batsman"){
-        batsman6s(file,batsman)
+        batsman6s(file,name)
     } else if (func == "Ground avg of batsman"){
-        batsmanAvgRunsGround(file,batsman)
+        batsmanAvgRunsGround(file,name)
     } else if (func == "Avg runs scored vs opposition"){
         batsmanAvgRunsOpposition(file,batsman)
     } else if (func == "Contribution to wins & losses"){
-        batsmanContributionWonLost(filesp,batsman)
+        batsmanContributionWonLost(filesp,name)
     } else if (func == "Batsman's dismissals"){
-        batsmanDismissals(file,batsman)
+        batsmanDismissals(file,name)
     } else if (func == "Batsman's Mean Strike Rate"){
         if(matchType == "Test"){
-            batsmanMeanStrikeRate(file,batsman)
+            batsmanMeanStrikeRate(file,name)
         } else if (matchType == "ODI"){
-            batsmanScoringRateODTT(file,batsman)
+            batsmanScoringRateODTT(file,name)
         }
     } else if (func == "Batsman's Moving Average"){
-        batsmanMovingAverage(file,batsman)
+        batsmanMovingAverage(file,name)
     }  else if (func == "Batsman's Perf BoxHist chart"){
-        batsmanPerfBoxHist(file,batsman)
+        batsmanPerfBoxHist(file,name)
     }  else if (func == "Batsman Perf. Forecast"){
-        batsmanPerfForecast(file,batsman)
+        batsmanPerfForecast(file,name)
     } else if (func == "Batsman's Home-Away record"){
-        batsmanPerfHomeAway(filesp,batsman)
+        batsmanPerfHomeAway(filesp,name)
     }  else if (func == "Batsman Runs-Freq. chart"){
-        batsmanRunsFreqPerf(file,batsman)
+        batsmanRunsFreqPerf(file,name)
     } else if (func == "Batsman Runs Likelihood est."){
-        batsmanRunsLikelihood(file,batsman)
+        batsmanRunsLikelihood(file,name)
     }  else if (func == "Batsman Run Ranges"){
-        batsmanRunsRanges(file,batsman)
+        batsmanRunsRanges(file,name)
     }  else if (func == "Batsman Perf. 3-D"){
-        battingPerf3d(file,batsman)
+        battingPerf3d(file,name)
     }   else if (func == "Check batsman form status"){
-        checkBatsmanInForm(file,batsman)
+        checkBatsmanInForm(file,name)
     } else if (func == "batsman6s"){
-        batsman6s(file,batsman)
+        batsman6s(file,name)
     } else {
         
     }
     
+}
+
+mapBatsman <- function(name){
+    batsman <- NULL
+    if(name == "Sachin Tendulkar"){
+        batsman <- "tendulkar"
+    } else if (name == "Rahul Dravid"){
+        batsman = "dravid"
+    } else if (name == "Ricky Ponting"){
+        batsman = "ponting"
+    } else if (name == "Kumar Sangakkara"){
+        batsman = "sangakkara"
+    } else if (name == "Jacques Kallis"){
+        batsman = "kallis"
+    } else if (name == "Sunil Gavaskar"){
+        batsman = "gavaskar"
+    } else if (name == "Sourav Ganguly"){
+        batsman = "ganguly"
+    } else if (name == "Brian Lara"){
+        batsman = "lara"
+    }else if (name == "Vivian Ricjards"){
+        batsman = "richards"
+    } else if (name == "Sir Don Bradman"){
+        batsman = "bradman"
+    } else if (name == "Younis Khan"){
+        batsman = "younis"
+    } else if (name == "Javed Miandad"){
+        batsman = "miandad"
+    } else if (name == "Inzamam Ul Haq"){
+        batsman = "inzamam"
+    } else if (name == "Mahela Jayawardene"){
+        batsman = "jayawardene"
+    } else if (name == "Sanath Jayasuriya"){
+        batsman = "jayasuriya"
+    } else if (name == "Alistair Cook"){
+        batsman = "cook"
+    } else if (name == "J E Root"){
+        batsman = "root"
+    } else if (name == "Steven Smith"){
+        batsman = "smith"
+    } else if (name == "David Warner"){
+        batsman = "warner"
+    }
+    batsman
 }
