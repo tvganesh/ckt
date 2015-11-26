@@ -1,6 +1,7 @@
 analyzeBatsman <- function(name,func,matchType) {
    
     # Update the drop down with all batsman
+    cat("name=",name)
     batsman <- mapBatsman(name)
     if(matchType == "Test") {
         file <- paste("./data/test/batsman/",batsman,".csv",sep="")
@@ -102,6 +103,54 @@ mapBatsman <- function(name){
         batsman = "smith"
     } else if (name == "David Warner"){
         batsman = "warner"
-    }
+    } else if (name == "A B Devilliers"){ # ODI batsman from here
+        batsman = "devilliers"
+    } else if (name == "Chris Gayle"){ 
+        batsman = "gayle"
+    } else if (name == "Virender Sehwag"){
+        batsman = "sehwag"
+    } else if (name == "Glenn Maxwell"){
+        batsman = "maxwell"
+    } else if (name == "Kris Srikkanth"){
+        batsman = "srikkanth"
+    } else if (name == "Rohit Sharma"){
+        batsman = "rohit"
+    } else if (name == "Virat Kohli"){
+        batsman = "kohli"
+    } else if (name == "M S Dhoni"){
+        batsman = "dhoni"
+    } else if (name == "Kapil Dev"){
+        batsman = "kapil"
+    } else if (name == "Shahid Afridi"){
+        batsman = "afridi"
+    } else if (name == "Misbah Ul Haq"){
+        batsman = "misbah"
+    } else if (name == "Ahmed Shehzad"){
+        batsman = "shehzad"
+    } else if (name == "Darren Bravo"){
+        batsman = "drnbravo"
+    } else if (name == "Dwayne Bravo"){
+        batsman = "dwnbravo"
+    } else if (name == "T M Dilshan"){
+        batsman = "dilshan"
+    } else if (name == "ST Jayasuriya"){
+        batsman = "jayasuriya"
+    }  else if (name == "Michael Clarke"){
+        batsman = "clarke"
+    }  else if (name == "Shane Watson"){
+        batsman = "watson"
+    } else if (name == "Ian Bell"){
+        batsman = "bell"
+    } else if (name == "Ian Botham"){
+        batsman = "botham"
+    } else if (name == "Nathan Astle"){
+        batsman = "nathan"
+    } else if (name == "Stephen Fleming"){
+        batsman = "fleming"
+    } else if (name == "Hashim Amla"){
+        batsman = "amla"
+    } else if (name == "Herschelle Gibbs"){
+        batsman = "gibbs"
+    } 
     batsman
 }
