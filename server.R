@@ -36,9 +36,14 @@ shinyServer(function(input, output,session) {
             updateSelectizeInput(session, 'batsman', choices = testBatsman, server = TRUE,selected=input$batsman)
             updateSelectizeInput(session, 'batsmanFunc', choices = funcs, server = TRUE,selected=input$batsmanFunc)
             
-        } else {
+        } else if(input$matchType == "ODI"){
             
             updateSelectizeInput(session, 'batsman', choices = odiBatsman, server = TRUE,selected=input$batsman)
+            updateSelectizeInput(session, 'batsmanFunc', choices = funcsODITT, server = TRUE,selected=input$batsmanFunc)
+        
+        } else {
+            
+            updateSelectizeInput(session, 'batsman', choices = ttBatsman, server = TRUE,selected=input$batsman)
             updateSelectizeInput(session, 'batsmanFunc', choices = funcsODITT, server = TRUE,selected=input$batsmanFunc)
         }
         print(input$batsman)

@@ -80,6 +80,9 @@ odiBatsman <- c("A B Devilliers","Chris Gayle","Virender Sehwag","Glenn Maxwell"
                  "Nathan Astle","Stephen Fleming",
                  "Hashim Amla","Herschelle Gibbs")
 
+ttBatsman <- c("Virat Kohli","Brendon McCullum","Aaron Finch", "Faf Du Plessis",
+               "Chris Gayle","Eoin Morgan","A D Hales")
+
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
 funcRelBat <- c("relativeBatsmanSR","relativeRunsFreqPerf")
 funcRelBowlTest <- c("relativeBowlingER","relativeBowlingPerf")

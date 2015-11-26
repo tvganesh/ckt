@@ -34,7 +34,7 @@ analyzeBatsman <- function(name,func,matchType) {
     } else if (func == "Batsman's Mean Strike Rate"){
         if(matchType == "Test"){
             batsmanMeanStrikeRate(file,name)
-        } else if (matchType == "ODI"){
+        } else if (matchType == "ODI" || matchType == "TT"){
             batsmanScoringRateODTT(file,name)
         }
     } else if (func == "Batsman's Moving Average"){
@@ -151,6 +151,16 @@ mapBatsman <- function(name){
         batsman = "amla"
     } else if (name == "Herschelle Gibbs"){
         batsman = "gibbs"
+    } else if (name == "Brendon McCullum"){
+        batsman = "mccullum"
+    } else if (name == "Aaron Finch"){
+        batsman = "finch"
+    } else if (name == "Faf Du Plessis"){
+        batsman = "plessis"
+    } else if (name == "Eoin Morgan"){
+        batsman = "morgan"
+    } else if (name == "A D Hales"){
+        batsman = "hales"
     } 
     batsman
 }
