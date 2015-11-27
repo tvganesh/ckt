@@ -50,18 +50,24 @@ funcs1 <- c("Bowler's Wickets-Runs plot",
             "Check Bowler Form status")
 
 # Function names for ODI and Twenty20  bowler analysis
-funcs1ODITT <- c("Bowler's Wickets-Runs plot",
+funcs1ODI <- c("Bowler's Wickets-Runs plot",
                  "Bowler's Wickets Freq Percent",
-                 "Bowler's Histogram of Wickets",
                  "Bowler's Avg Wickets at Ground",
                  "Bowler's Avg Wicket against opposition",
-                 "Contribution to wins & losses",
-                 "Bowler's Perf. Home-Away",
                  "Bowler's Economy Rate",
                  "Bowler's Moving Average",
                  "Bowler's Perf. Forecast",
-                 #"bowlerWktRateTT",
                  "Check Bowler Form status")
+
+funcs1TT <- c("Bowler's Wickets-Runs plot",
+               "Bowler's Wickets Freq Percent",
+               "Bowler's Avg Wickets at Ground",
+               "Bowler's Avg Wicket against opposition",
+               "Bowler's Economy Rate",
+               "Bowler's Moving Average",
+               "Bowler's Perf. Forecast",
+               "Bowler Wicket Rate",
+               "Check Bowler Form status")
 
 testBatsman <- c("Sachin Tendulkar","Rahul Dravid","Ricky Ponting","Kumar Sangakkara",
                  "Jacques Kallis","Sunil Gavaskar","Sourav Ganguly","Brian Lara",
@@ -90,6 +96,14 @@ testBowler <-  c("Anil Kumble","Shane Warne","Muthiah Muralitharan",
                   "Allan Donald","Mitchell Johnson","Dale Steyn",
                   "Stuart Broad","James Anderson", "Dennis Lillee",
                   "Jeff Thomson","Glenn McGrath")
+
+odiBowler <- c("Mitchell Johnson","Dale Steyn","Lasith Malinga","Tim Southee",
+               "Mitchell Starc","T A Boult","Shakib Al Hasan","Imran Tahir",
+               "Ravichandran Ashwin","Saeed Ajmal","Morne Morkel")
+
+ttBowler <- c("Sunil Narine","Samuel Badree","Ravichandran Ashwin","Ajantha Mendis",
+              "Shahid Afridi","Nathan McCullum","Imran Tahir","Sachithra Senanayake",
+              "Mitchell Starc","Lasith Malinga")
 
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
 funcRelBat <- c("relativeBatsmanSR","relativeRunsFreqPerf")

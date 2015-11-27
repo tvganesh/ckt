@@ -13,7 +13,7 @@ analyzeBowler <- function(name,func,matchType) {
         print(file)
     } else {
         file <- paste("./data/tt/bowler/",bowler,".csv",sep="")
-        filesp <- paste("./data/odi/bowler/",bowler,"sp.csv",sep="")
+        filesp <- paste("./data/tt/bowler/",bowler,"sp.csv",sep="")
         print(file)
     }
         
@@ -42,6 +42,8 @@ analyzeBowler <- function(name,func,matchType) {
             bowlerWktsRunsPlot(file,name)
         } else if (func == "Check Bowler Form status"){
             checkBowlerInForm(file,name)
+        } else if (func == "Bowler Wicket Rate"){
+            bowlerWktRateTT(file,name)
         } 
         
 }   
@@ -94,6 +96,38 @@ mapBowler <- function(name){
         bowler = "thomson"
     } else if (name == "Glenn McGrath"){
         bowler = "mcgrath"
-    } 
+    } else if (name == "Lasith Malinga"){
+        bowler = "malinga"
+    } else if (name == "Tim Southee"){
+        bowler = "southee"
+    } else if (name == "Mitchell Starc"){
+        bowler = "starc"
+    } else if (name == "T A Boult"){
+        bowler = "boult"
+    } else if (name == "Shakib Al Hasan"){
+        bowler = "shakib"
+    } else if (name == "Imran Tahir"){
+        bowler = "tahir"
+    } else if (name == "Ravichandran Ashwin"){
+        bowler = "ashwin"
+    } else if (name == "Saeed Ajmal"){
+        bowler = "ajmal"
+    } else if (name == "Ajantha Mendis"){
+        bowler = "mendis"
+    } else if (name == "Samuel Badree"){
+        bowler = "badree"
+    } else if (name == "Sunil Narine"){
+        bowler = "narine"
+    } else if (name == "Shahid Afridi"){
+        bowler = "afridi"
+    } else if (name == "Sachithra Senanayake"){
+        bowler = "senanayake"
+    } else if (name == "Nathan McCullum"){
+        bowler = "nathan"
+    } else if (name == "Imran Tahir"){
+        bowler = "tahir"
+    } else if (name == "Mitchell Starc"){
+        bowler = "starc"
+    }  
     bowler
 }

@@ -56,10 +56,14 @@ shinyServer(function(input, output,session) {
             updateSelectizeInput(session, 'bowler', choices = testBowler, server = TRUE,selected=input$bowler)
             updateSelectizeInput(session, 'bowlerFunc', choices = funcs1, server = TRUE,selected=input$bowlerFunc)
             
+        } else if(input$matchType1 == "ODI"){
+            
+            updateSelectizeInput(session, 'bowler', choices = odiBowler, server = TRUE,selected=input$bowler)
+            updateSelectizeInput(session, 'bowlerFunc', choices = funcs1ODI, server = TRUE,selected=input$bowlerFunc)
+        
         } else {
-            players <- c("malinga","johnson","southee")
-            updateSelectizeInput(session, 'bowler', choices = players, server = TRUE,selected=input$bowler)
-            updateSelectizeInput(session, 'bowlerFunc', choices = funcs1, server = TRUE,selected=input$bowlerFunc)
+            updateSelectizeInput(session, 'bowler', choices = ttBowler, server = TRUE,selected=input$bowler)
+            updateSelectizeInput(session, 'bowlerFunc', choices = funcs1TT, server = TRUE,selected=input$bowlerFunc)
         }
         
         analyzeBowler(input$bowler,input$bowlerFunc,input$matchType1)
