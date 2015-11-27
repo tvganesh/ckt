@@ -39,7 +39,6 @@ funcsODITT <- c("4s of batsman",
 # Function names for Test bowler analysis
 funcs1 <- c("Bowler's Wickets-Runs plot",
             "Bowler's Wickets Freq Percent",
-            "Bowler's Histogram of Wickets",
             "Bowler's Avg Wickets at Ground",
             "Bowler's Avg Wicket against opposition",
             "Contribution to wins & losses",
@@ -82,6 +81,15 @@ odiBatsman <- c("A B Devilliers","Chris Gayle","Virender Sehwag","Glenn Maxwell"
 
 ttBatsman <- c("Virat Kohli","Brendon McCullum","Aaron Finch", "Faf Du Plessis",
                "Chris Gayle","Eoin Morgan","A D Hales")
+
+testBowler <-  c("Anil Kumble","Shane Warne","Muthiah Muralitharan",
+                 "Kapil Dev","B S Chandrasekhar","Bishen Sigh Bedi",
+                 "E A S Prasanna","S Venkataraghavan",
+                 "Imran Khan","Wasim Akram","Waqar Younis",
+                  "Andy Roberts","Michael Holding","Malcolm Marshall",
+                  "Allan Donald","Mitchell Johnson","Dale Steyn",
+                  "Stuart Broad","James Anderson", "Dennis Lillee",
+                  "Jeff Thomson","Glenn McGrath")
 
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
 funcRelBat <- c("relativeBatsmanSR","relativeRunsFreqPerf")

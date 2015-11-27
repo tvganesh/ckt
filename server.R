@@ -22,10 +22,6 @@ source("definitions.R")
 
 shinyServer(function(input, output,session) {
    
-    #updateSelectizeInput(session, 'batsman', choices = players, server = TRUE,selected="tendulkar")
-    #updateSelectizeInput(session, 'batsmanFunc', choices = funcs, server = TRUE,selected="4s of batsman")
-    
-   
    
  
     # Analyze and display batsmen plots
@@ -56,8 +52,8 @@ shinyServer(function(input, output,session) {
         
         
         if(input$matchType1 == "Test"){
-            players <- c("kumble","warne","murali")
-            updateSelectizeInput(session, 'bowler', choices = players, server = TRUE,selected=input$bowler)
+           
+            updateSelectizeInput(session, 'bowler', choices = testBowler, server = TRUE,selected=input$bowler)
             updateSelectizeInput(session, 'bowlerFunc', choices = funcs1, server = TRUE,selected=input$bowlerFunc)
             
         } else {

@@ -1,6 +1,8 @@
-analyzeBowler <- function(bowler,func,matchType) {
+analyzeBowler <- function(name,func,matchType) {
   
-   
+    
+    cat("name=",name)
+    bowler <- mapBowler(name)
     if(matchType == "Test") {
         file <- paste("./data/test/bowler/",bowler,".csv",sep="")
         filesp <- paste("./data/test/bowler/", bowler,"sp.csv",sep="")
@@ -17,29 +19,81 @@ analyzeBowler <- function(bowler,func,matchType) {
         
         if(func =="Bowler's Avg Wickets at Ground"){
             print("Here1")
-            bowlerAvgWktsGround(file,bowler)
+            bowlerAvgWktsGround(file,name)
         } else if (func == "Bowler's Avg Wicket against opposition"){
-            bowlerAvgWktsOpposition(file,bowler)
+            bowlerAvgWktsOpposition(file,name)
         } else if (func == "Contribution to wins & losses"){
-            bowlerContributionWonLost(filesp,bowler)
+            bowlerContributionWonLost(filesp,name)
         } else if (func == "Bowler's Economy Rate"){
-            bowlerEconRate(file,bowler)
+            bowlerEconRate(file,name)
         } else if (func == "Bowler's Wickets performance"){
-            bowlerHistWickets(file,bowler)
+            bowlerHistWickets(file,name)
         } else if (func == "Bowler's Moving Average"){
-            bowlerMovingAverage(file,bowler)
+            bowlerMovingAverage(file,name)
         } else if (func == "Bowler's Perf. Forecast"){
-            bowlerPerfForecast(file,bowler)
+            bowlerPerfForecast(file,name)
         } else if (func == "Bowler's Perf. Home-Away"){
-            bowlerPerfHomeAway(filesp,bowler)
+            bowlerPerfHomeAway(filesp,name)
         } else if (func == "Bowler's Wickets-Runs plot"){
-            bowlerWktsRunsPlot(file,bowler)
+            bowlerWktsRunsPlot(file,name)
         } else if (func == "Bowler's Wickets Freq Percent"){
-            bowlerWktsFreqPercent(file,bowler)
+            bowlerWktsFreqPercent(file,name)
         } else if (func == "Bowler's Wickets-Runs plot"){
-            bowlerWktsRunsPlot(file,bowler)
+            bowlerWktsRunsPlot(file,name)
         } else if (func == "Check Bowler Form status"){
-            checkBowlerInForm(file,bowler)
+            checkBowlerInForm(file,name)
         } 
         
 }   
+
+mapBowler <- function(name){
+    bowler <- NULL
+    if(name == "Anil Kumble"){
+        bowler <- "kumble"
+    } else if (name == "Shane Warne"){
+        bowler = "warne"
+    } else if (name == "Muthiah Muralitharan"){
+        bowler = "murali"
+    } else if (name == "Kapil Dev"){
+        bowler = "kapil"
+    } else if (name == "B S Chandrasekhar"){
+        bowler = "chandra"
+    } else if (name == "Bishen Sigh Bedi"){
+        bowler = "bedi"
+    } else if (name == "E A S Prasanna"){
+        bowler = "prasanna"
+    } else if (name == "S Venkataraghavan"){
+        bowler = "venkat"
+    } else if (name == "B S Chandrasekhar"){
+        bowler = "chandra"
+    } else if (name == "Imran Khan"){
+        bowler = "imran"
+    } else if (name == "Wasim Akram"){
+        bowler = "akram"
+    } else if (name == "Waqar Younis"){
+        bowler = "younis"
+    } else if (name == "Andy Roberts"){
+        bowler = "roberts"
+    } else if (name == "Michael Holding"){
+        bowler = "holding"
+    } else if (name == "Malcolm Marshall"){
+        bowler = "marshall"
+    } else if (name == "Allan Donald"){
+        bowler = "donald"
+    } else if (name == "Mitchell Johnson"){
+        bowler = "johnson"
+    } else if (name == "Dale Steyn"){
+        bowler = "steyn"
+    } else if (name == "Stuart Broad"){
+        bowler = "broad"
+    } else if (name == "James Anderson"){
+        bowler = "anderson"
+    } else if (name == "Dennis Lillee"){
+        bowler = "lillee"
+    } else if (name == "Jeff Thomson"){
+        bowler = "thomson"
+    } else if (name == "Glenn McGrath"){
+        bowler = "mcgrath"
+    } 
+    bowler
+}
