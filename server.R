@@ -73,31 +73,24 @@ shinyServer(function(input, output,session) {
     
     output$relBatsmenPlot <- renderPlot({  
         if(input$matchType3 == "Test"){
-            players <- c("tendulkar","Dravid","ponting","sangakkara")
-            updateSelectizeInput(session, 'batsmen', choices = players, server = TRUE,selected=input$batsmen)
+          
+            updateSelectizeInput(session, 'batsmen', choices = testBatsman, server = TRUE,selected=input$batsmen)
             updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
             
+        } else if(input$matchType3 == "ODI"){
+           
+            updateSelectizeInput(session, 'batsmen', choices = odiBatsman, server = TRUE,selected=input$batsmen)
+            updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
         } else {
-            players <- c("devilliers","gayle","sehwag")
-            updateSelectizeInput(session, 'batsmen', choices = players, server = TRUE,selected=input$batsmen)
+            
+            updateSelectizeInput(session, 'batsmen', choices = ttBatsman, server = TRUE,selected=input$batsmen)
             updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
         }
-        
-        #cat("func",input$batsmenFunc,"\n")
-        #cat("Player",input$batsmen,"\n")
-        #file <- paste(input$player,".csv",sep="")
-        #filesp <- paste(input$player,"sp.csv",sep="")
-        #cat(file,"\n")
-        
-        
+       
         if(length(input$batsmen != 0)){
              relBatsmenPerf(input$batsmen,input$batsmenFunc,input$matchType3)
         }
-        #updateSelectizeInput(session, 'player', choices = players, server = TRUE,selected="kumble")
-        #updateSelectizeInput(session, 'func', choices = funcs1, server = TRUE,selected="Bowler's Avg Wickets at Ground")
-        
-        
-        # If the user requested "All' plot the combined plot else draw the barplot
+       
         
     })
     
@@ -113,8 +106,6 @@ shinyServer(function(input, output,session) {
             updateSelectizeInput(session, 'bowlers', choices = players, server = TRUE,selected=input$bowlers)
             updateSelectizeInput(session, 'bowlersFunc', choices = funcRelBowlERODTT, server = TRUE,selected=input$bowlersFunc)
         }
-        
-        
         
         
         if(length(input$bowlers != 0)){

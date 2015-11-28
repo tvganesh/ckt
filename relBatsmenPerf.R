@@ -1,17 +1,24 @@
 relBatsmenPerf <- function(batsmen,func,matchType) {
+    cat("name=",batsmen)
     
     file <- NULL
     if(matchType == "Test") {
         
         for(i in 1:length(batsmen)){
-        
-              file[i] <- paste("./data/test/batsman/",batsmen[i],".csv",sep="")
+              batsman <- mapBatsman(batsmen[i])
+              file[i] <- paste("./data/test/batsman/",batsman,".csv",sep="")
         
         }
     } else if (matchType == "ODI"){
         for(i in 1:length(batsmen)){
+            batsman <- mapBatsman(batsmen[i])
+            file[i] <- paste("./data/odi/batsman/",batsman,".csv",sep="")
             
-            file[i] <- paste("./data/odi/batsman/",batsmen[i],".csv",sep="")
+        }
+    } else {
+        for(i in 1:length(batsmen)){
+            batsman <- mapBatsman(batsmen[i])
+            file[i] <- paste("./data/tt/batsman/",batsman,".csv",sep="")
             
         }
     }

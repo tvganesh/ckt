@@ -161,6 +161,8 @@ mapBatsman <- function(name){
         batsman = "morgan"
     } else if (name == "A D Hales"){
         batsman = "hales"
+    } else if (name == "Vivian Richards"){
+        batsman = "richards"
     } 
     batsman
 }
