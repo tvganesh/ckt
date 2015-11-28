@@ -69,6 +69,8 @@ funcs1TT <- c("Bowler's Wickets-Runs plot",
                "Bowler Wicket Rate",
                "Check Bowler Form status")
 
+
+
 testBatsman <- c("Sachin Tendulkar","Rahul Dravid","Ricky Ponting","Kumar Sangakkara",
                  "Jacques Kallis","Sunil Gavaskar","Sourav Ganguly","Brian Lara",
                  "Vivian Richards","Sir Don Bradman","Younis Khan","Javed Miandad",
@@ -105,8 +107,13 @@ ttBowler <- c("Sunil Narine","Samuel Badree","Ravichandran Ashwin","Ajantha Mend
               "Shahid Afridi","Nathan McCullum","Imran Tahir","Sachithra Senanayake",
               "Mitchell Starc","Lasith Malinga")
 
+funcsRelBatsman <-c("Relative Batsman Strike Rate", "Relative Runs Freq Performance")
+
+funcsRelBowlerTestODI <- c("Relative Bowling Economy Rate","Relative Bowling Performance")
+
+funcsRelBowlerTT <- c("Relative Bowling Economy Rate","Relative Bowling Performance", "Relative Wicket Rate")
+
 funcOD <- c("batsmanScoringRateODTT","bowlerWktsFreqPercent","bowlerWktsRunsPlot")
-funcRelBat <- c("relativeBatsmanSR","relativeRunsFreqPerf")
 funcRelBowlTest <- c("relativeBowlingER","relativeBowlingPerf")
 funcRelOD <-c("relativeBatsmanSRODTT","relativeRunsFreqPerfODTT")
 funcRelBowlERODTT <- c("relativeBowlingPerf","relativeBowlingERODTT","relativeWktRateTT")

@@ -4,14 +4,20 @@ relBowlersPerf <- function(bowlers,func,matchType) {
     if(matchType == "Test") {
         
         for(i in 1:length(bowlers)){
-            
-            file[i] <- paste("./data/test/bowler/",bowlers[i],".csv",sep="")
+            bowler <- mapBowler(bowlers[i])
+            file[i] <- paste("./data/test/bowler/",bowler,".csv",sep="")
             
         }
     } else if (matchType == "ODI"){
         for(i in 1:length(bowlers)){
+            bowler <- mapBowler(bowlers[i])
+            file[i] <- paste("./data/odi/bowler/",bowler,".csv",sep="")
             
-            file[i] <- paste("./data/odi/bowler/",bowlers[i],".csv",sep="")
+        }
+    } else if (matchType == "TT"){
+        for(i in 1:length(bowlers)){
+            bowler <- mapBowler(bowlers[i])
+            file[i] <- paste("./data/tt/bowler/",bowler,".csv",sep="")
             
         }
     }
@@ -20,24 +26,33 @@ relBowlersPerf <- function(bowlers,func,matchType) {
     
     cat(file)
     if(matchType == "Test"){
-        if(func =="relativeBowlingER"){
+        if(func =="Relative Bowling Economy Rate"){
             relativeBowlingER(file,bowlers)
         }
-        if (func == "relativeBowlingPerf"){
+        if (func == "Relative Bowling Performance"){
             relativeBowlingPerf(file,bowlers)
         } 
         
     } 
     
     
-    if(matchType == "ODI" || matchType == "TT") {
-        if(func =="relativeBowlingERODTT"){
+    if(matchType == "ODI") {
+        if(func =="Relative Bowling Economy Rate"){
             relativeBowlingERODTT(file,bowlers)
         }
-        if (func == "relativeBowlingPerf"){
+        if (func == "Relative Bowling Performance"){
             relativeBowlingPerf(file,bowlers)
         } 
-        if (func == "relativeBowlingPerf" && matchType == "TT"){
+    }
+    
+    if(matchType == "TT") {
+        if(func =="Relative Bowling Economy Rate"){
+            relativeBowlingERODTT(file,bowlers)
+        }
+        if (func == "Relative Bowling Performance"){
+            relativeBowlingPerf(file,bowlers)
+        } 
+        if (func == "Relative Wicket Rate"){
             
             relativeWktRateTT(file,bowlers)
         }

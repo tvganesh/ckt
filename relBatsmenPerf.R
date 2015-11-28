@@ -23,18 +23,17 @@ relBatsmenPerf <- function(batsmen,func,matchType) {
         }
     }
     cat(file)
-    #file <- paste(batsmen,".csv",sep="")
-    #filesp <- paste(batsmen,"sp.csv",sep="")
+    
     
     cat(file)
-    if(func =="relativeBatsmanSR"){
+    if(func =="Relative Batsman Strike Rate"){
         if(matchType == "Test"){
              relativeBatsmanSR(file,batsmen)
         } else{
             relativeBatsmanSRODTT(file,batsmen)
         }
         
-    } else if (func == "relativeRunsFreqPerf"){
+    } else if (func == "Relative Runs Freq Performance"){
         relativeRunsFreqPerf(file,batsmen)
     }
 }

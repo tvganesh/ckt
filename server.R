@@ -75,16 +75,16 @@ shinyServer(function(input, output,session) {
         if(input$matchType3 == "Test"){
           
             updateSelectizeInput(session, 'batsmen', choices = testBatsman, server = TRUE,selected=input$batsmen)
-            updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
+            updateSelectizeInput(session, 'batsmenFunc', choices = funcsRelBatsman, server = TRUE,selected=input$batsmenFunc)
             
         } else if(input$matchType3 == "ODI"){
            
             updateSelectizeInput(session, 'batsmen', choices = odiBatsman, server = TRUE,selected=input$batsmen)
-            updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
+            updateSelectizeInput(session, 'batsmenFunc', choices = funcsRelBatsman, server = TRUE,selected=input$batsmenFunc)
         } else {
             
             updateSelectizeInput(session, 'batsmen', choices = ttBatsman, server = TRUE,selected=input$batsmen)
-            updateSelectizeInput(session, 'batsmenFunc', choices = funcRelBat, server = TRUE,selected=input$batsmenFunc)
+            updateSelectizeInput(session, 'batsmenFunc', choices = funcsRelBatsman, server = TRUE,selected=input$batsmenFunc)
         }
        
         if(length(input$batsmen != 0)){
@@ -97,14 +97,16 @@ shinyServer(function(input, output,session) {
     # Set the drop down players, functions based on the match type
     output$relBowlersPlot <- renderPlot({  
         if(input$matchType4 == "Test"){
-            players <- c("murali","warne","kumble")
-            updateSelectizeInput(session, 'bowlers', choices = players, server = TRUE,selected=input$bowlers)
-            updateSelectizeInput(session, 'bowlersFunc', choices = funcRelBowlTest, server = TRUE,selected=input$bowlersFunc)
+            updateSelectizeInput(session, 'bowlers', choices = testBowler, server = TRUE,selected=input$bowlers)
+            updateSelectizeInput(session, 'bowlersFunc', choices = funcsRelBowlerTestODI, server = TRUE,selected=input$bowlersFunc)
             
+        } else if(input$matchType4 == "ODI"){
+            updateSelectizeInput(session, 'bowlers', choices = odiBowler, server = TRUE,selected=input$bowlers)
+            updateSelectizeInput(session, 'bowlersFunc', choices = funcsRelBowlerTestODI, server = TRUE,selected=input$bowlersFunc)
+        
         } else {
-            players <- c("johnson","steyn","southee")
-            updateSelectizeInput(session, 'bowlers', choices = players, server = TRUE,selected=input$bowlers)
-            updateSelectizeInput(session, 'bowlersFunc', choices = funcRelBowlERODTT, server = TRUE,selected=input$bowlersFunc)
+            updateSelectizeInput(session, 'bowlers', choices = ttBowler, server = TRUE,selected=input$bowlers)
+            updateSelectizeInput(session, 'bowlersFunc', choices = funcsRelBowlerTT, server = TRUE,selected=input$bowlersFunc)
         }
         
         
