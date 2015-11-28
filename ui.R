@@ -131,6 +131,16 @@ shinyUI(navbarPage("cricketr analyzes Cricketers!",
                            )    
                            
                   ),
-                   tabPanel("Component 3")
+                   tabPanel("About"),
+                  h2("Sixer - cricketr's Shiny avatar"),
+                  p("This Shiny app is based on the R package 'cricketr'. In this Shiny app, I use  the
+                    cricketr package to analyze the performances of cricketers. cricketr can analyze batsman
+                    and bowlers in all formats of the game namely Test, ODI and Twenty20."),
+                  p("The R package 'cricketr' has been authored by Tinniam V Ganesh for analyzing  performances of cricketers
+                    based on ESPN Cricinfo's Statsguru"),
+                  p("This Shiny app 'Sixer' has been designed and developed by  Tinniam V Ganesh, Nov 2015"),
+                  p("The data for this Shiny app has been taken from ESPN Cricinfo - http://www.espncricinfo.com/ci/content/stats/index.html"),
+                  p("More details about this app and for other posts, see my blog
+                    http://gigadom.wordpress.com/")
                    
 ))
